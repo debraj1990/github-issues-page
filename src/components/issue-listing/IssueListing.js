@@ -13,10 +13,33 @@ class IssueListing extends Component {
     this.state = {
       searchTerm: '',
       issueStateFilterBy: 'open',
-      sortBy: '',
+      sortBy: 'created_at|desc',
       filteredIssueList: []
     };
+    
+    this.handleSearchTermTextChange = this.handleSearchTermTextChange.bind(this);
+    this.handleIssueStateChange = this.handleIssueStateChange.bind(this);
+    this.handleSortByChange = this.handleSortByChange.bind(this);
   }
+
+  handleSearchTermTextChange(searchTerm) {
+    this.setState({
+      searchTerm: searchTerm
+    });
+  }
+  
+  handleIssueStateChange(issueStateFilterBy) { console.log(issueStateFilterBy);
+    this.setState({
+      issueStateFilterBy: issueStateFilterBy
+    })
+  }
+
+  handleSortByChange(sortBy) {
+    this.setState({
+      sortBy: sortBy
+    })
+  }
+
   static propTypes = {
     match: PropTypes.object
   };
@@ -53,8 +76,8 @@ class IssueListing extends Component {
     return (
       <div className="issue-listing-page">
         <IssueHeader issueCount={openIssuesLength} repoOwner={this.props.match.params.repoOwner} repoName={this.props.match.params.repoName} />
-        <IssueFilter />
-        <IssueList responseIssueList={this.state.filteredIssueList} searchTerm={this.state.searchTerm} issueStateFilterBy={this.state.issueStateFilterBy} sortBy={this.state.sortBy} />
+        <IssueFilter searchTerm={this.state.searchTerm} onSearchTermChange={this.handleSearchTermTextChange} />
+        <IssueList responseIssueList={this.state.filteredIssueList} searchTerm={this.state.searchTerm} issueStateFilterBy={this.state.issueStateFilterBy} sortBy={this.state.sortBy} onIssueStateChange={this.handleIssueStateChange} onSortByChange={this.handleSortByChange } />
       </div>
     );
   }

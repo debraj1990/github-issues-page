@@ -1,5 +1,12 @@
 .issue-listing-page {
     .control-label {
-        display: none;
+        // display: none;
+    }
+    .result-table {
+        .row:first-child {
+            span {
+                cursor: pointer;
+            }
+        }
     }
 }
