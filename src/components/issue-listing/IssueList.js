@@ -66,10 +66,10 @@ class IssueList extends Component {
                 {filteredIssueList.map(filteredItem =>
                     <tr key={filteredItem.number}>
                         <td>
-                            <h2>{filteredItem.title}</h2>
+                            <h4>{filteredItem.title}</h4>
                             <p><span>#{filteredItem.number} opened on {filteredItem.created_at} by {filteredItem.user.login} </span></p>
                         </td>
-                    </tr>    
+                    </tr>
                 )}
                 </tbody>
             </table>
