@@ -1,20 +1,23 @@
 import React, { Component } from 'react';
-import { Form, Row, Col, Grid, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
+import { Form, Row, Col, Grid, Tab, Tabs, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
+
 const IssueHeader = ({issueCount, repoOwner, repoName}) => (
     <Grid>
       <Row className="show-grid">
         <Col xs={4}>
-          <span>{repoOwner} / {repoName}</span>
+          <p>{repoOwner} / {repoName}</p>
         </Col>
-        {/* <Col xs={6} md={4}>
-          <code>{'<Col xs={6} md={4} />'}</code>
-        </Col> */}
       </Row>
       <Row className="show-grid">
-        <Col xs={1}>
+        <Col xs={12}>
         </Col>
-        <Col xs={2}>
-          <span>Issues<i>{issueCount}</i></span>
+        <Col xs={12}>
+          <Tabs defaultActiveKey={1} id="uncontrolled-tab-example">
+            <Tab eventKey={1} title={'Issues ' + issueCount}>
+              {/* <p>Issues<i>{issueCount}</i></p> */}
+            </Tab>
+          </Tabs>
+          {/* <p>Issues<i>{issueCount}</i></p> */}
         </Col>
       </Row>
     </Grid>

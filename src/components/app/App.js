@@ -24,21 +24,21 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Github Issues Page (React/Redux Excercise) - Developed By Er. Debraj Ray</h1>
         </header>
-        <Form horizontal onSubmit={this.redirectToListing}>
+        <Form horizontal onSubmit={this.redirectToListing} className="container mt-10">
           <FormGroup controlId="repoName">
-            <Col componentClass={ControlLabel} sm={2}>
+            <Col componentClass={ControlLabel} sm={4}>
             GitHub Repository Name
             </Col>
-            <Col sm={8}>
+            <Col sm={6}>
               <FormControl type="text" placeholder="e.g. issuespostman" required="true" />
             </Col>
           </FormGroup>
 
           <FormGroup controlId="repoOwner">
-            <Col componentClass={ControlLabel} sm={2}>
+            <Col componentClass={ControlLabel} sm={4}>
             GitHub Repository Owner
             </Col>
-            <Col sm={8}>
+            <Col sm={6}>
               <FormControl type="text" placeholder="e.g. debraj1990" required="true" />
             </Col>
           </FormGroup>

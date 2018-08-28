@@ -33,10 +33,10 @@ class IssueList extends Component {
         <Grid className="result-table">
             <Row className="grey-bg">
             <Col xs={2}>
-                <span stateVal="open" onClick={this.handleIssueStateChange}>{openIssuesLength} Open</span>
+                <span stateval="open" onClick={this.handleIssueStateChange}>{openIssuesLength} Open</span>
             </Col>
             <Col xs={2}>
-                <span stateVal="closed" onClick={this.handleIssueStateChange}>{closedIssuesLength} Closed</span>
+                <span stateval="closed" onClick={this.handleIssueStateChange}>{closedIssuesLength} Closed</span>
             </Col>
             <Col xs={4}>
             </Col>
@@ -61,16 +61,18 @@ class IssueList extends Component {
                 </Form>
             </Col>
             </Row>
-            {filteredIssueList.map(filteredItem =>
-            <Row key={filteredItem.number} className="">
-            <Col xs={12}>
-                {filteredItem.title}
-            </Col>
-            <Col xs={12}>
-                <span>#{filteredItem.number} opened on {filteredItem.created_at} by {filteredItem.user.login} </span>
-            </Col>
-            </Row>
-            )}
+            <table className="table table-hover">
+                <tbody>
+                {filteredIssueList.map(filteredItem =>
+                    <tr key={filteredItem.number}>
+                        <td>
+                            <h2>{filteredItem.title}</h2>
+                            <p><span>#{filteredItem.number} opened on {filteredItem.created_at} by {filteredItem.user.login} </span></p>
+                        </td>
+                    </tr>    
+                )}
+                </tbody>
+            </table>
         </Grid>
         );
     }
