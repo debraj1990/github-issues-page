@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Form, Row, Col, Grid, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 // const IssueList = ({responseIssueList, searchTerm, issueStateFilterBy, sortBy, onIssueStateChange, onSortByChange}) => {
 class IssueList extends Component {
@@ -66,7 +67,9 @@ class IssueList extends Component {
                 {filteredIssueList.map(filteredItem =>
                     <tr key={filteredItem.number}>
                         <td>
-                            <h4>{filteredItem.title}</h4>
+                            <Link to={`/issuedetail/${filteredItem.number}`}>
+                                <h4>{filteredItem.title}</h4>
+                            </Link>
                             <p><span>#{filteredItem.number} opened on {filteredItem.created_at} by {filteredItem.user.login} </span></p>
                         </td>
                     </tr>

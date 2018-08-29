@@ -51,9 +51,19 @@ class IssueListing extends Component {
   }
   fetchIssueList(ajaxUri) {
     fetch(ajaxUri)
+      // .then(response => { console.log(response);
+      //   if (!response.ok) {
+      //       throw Error(response.statusText);
+      //   }
+      //   return response;
+      // })
       .then(response => response.json())
       .catch(error => console.error('Error:', error))
       .then((response) => {
+        if (typeof response === 'undefined') {
+            throw Error('The fetch request failed');
+            return;
+        }
         console.log('Success:', response);
         // return response;
         if(response.length){
@@ -62,15 +72,6 @@ class IssueListing extends Component {
         console.log('filteredData', this.state.filteredIssueList);
       });
     }
-  // redirectToListing = (event) => {
-  //   // 1. Stop the form from submitting
-  //   event.preventDefault();
-  //   // 2. get text from both input
-  //   const repoName = document.getElementById("repoName").value;
-  //   const repoOwner = document.getElementById("repoOwner").value;
-  //   // 3. Change the page to /store/whatever-they-entered
-  //   this.props.history.push(`/issuelisting/${repoOwner}/${repoName}`);
-  // }
   render() {
     const openIssuesLength = this.state.filteredIssueList.filter(issueRow => issueRow.state === 'open').length;
     return (
