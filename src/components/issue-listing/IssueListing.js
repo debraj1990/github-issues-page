@@ -62,14 +62,15 @@ class IssueListing extends Component {
       .then((response) => {
         if (typeof response === 'undefined') {
             throw Error('The fetch request failed');
-            return;
         }
         console.log('Success:', response);
         // return response;
         if(response.length){
+          // store.dispatch({type: 'UPDATE_REPO_OWNER',repoOwner: 'debraj1990'});
           this.setState({ filteredIssueList: response });
         }
         console.log('filteredData', this.state.filteredIssueList);
+        // store.getState();
       });
     }
   render() {
