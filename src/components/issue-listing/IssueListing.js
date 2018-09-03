@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from "prop-types";
+import * as actionCreators from '../../actions/actionCreators';
+import store from '../../store';
 import { Form, Row, Col, Grid, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 import './IssueListing.css';
 import IssueHeader from './IssueHeader';
@@ -47,6 +49,10 @@ class IssueListing extends Component {
     const { params } = this.props.match;
     const issuesEndPoint = `https://api.github.com/repos/${params.repoOwner}/${params.repoName}/issues?state=all`;
     console.log(issuesEndPoint);
+    // Dispatch some actions
+    store.dispatch(actionCreators.updateRepoOwner(params.repoOwner));
+    store.dispatch(actionCreators.updateRepoName(params.repoName));
+    //Place the API call
     this.fetchIssueList(issuesEndPoint);
   }
   fetchIssueList(ajaxUri) {
@@ -67,10 +73,12 @@ class IssueListing extends Component {
         // return response;
         if(response.length){
           // store.dispatch({type: 'UPDATE_REPO_OWNER',repoOwner: 'debraj1990'});
+          store.dispatch(actionCreators.updateResponse(response));
           this.setState({ filteredIssueList: response });
         }
         console.log('filteredData', this.state.filteredIssueList);
-        // store.getState();
+        // Log the updated state
+        console.log(store.getState());
       });
     }
   render() {

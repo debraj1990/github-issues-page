@@ -11,7 +11,7 @@ const defaultState = {
     // searchTerm: '',
     // issueStateFilterBy: 'open',
     // sortBy: 'created_at|desc',
-    issues: [{"somekey":"somevalue", "anotherKey":"anotherValue"}],
+    issues: [],
     repoOwner: '',
     repoName: '',
     comments: {"somekey":"somevalue", "anotherKey":"anotherValue"}
