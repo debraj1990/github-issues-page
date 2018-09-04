@@ -23,7 +23,7 @@ let IssueDetail = (props) => {
     // Log the initial state
     // console.log(store.getState());
     const openIssuesLength = props.issues.filter(issueRow => issueRow.state === 'open').length;
-    const selectedIssue = props.issues.find(issueRow => issueRow.number = props.match.params.issueNumber);
+    const selectedIssue = props.issues.find(issueRow => issueRow.number == props.match.params.issueNumber);
     console.log(selectedIssue);
     return(
     <div className="issue-detail-page">
