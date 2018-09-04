@@ -72,8 +72,8 @@ class IssueListing extends Component {
         console.log('Success:', response);
         // return response;
         if(response.length){
-          // store.dispatch({type: 'UPDATE_REPO_OWNER',repoOwner: 'debraj1990'});
-          store.dispatch(actionCreators.updateResponse(response));
+          // store.dispatch({type: 'UPDATE_REPO_OWNER',repoOwner: 'debraj1990'}); //this is when calling in console
+          store.dispatch(actionCreators.updateResponse(response)); //update 'issues' in store
           this.setState({ filteredIssueList: response });
         }
         console.log('filteredData', this.state.filteredIssueList);
