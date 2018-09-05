@@ -5,6 +5,7 @@ import * as actionCreators from '../../actions/actionCreators';
 // import store from '../../store';
 import IssueHeader from '../issue-listing/IssueHeader';
 import { Form, Row, Col, Grid, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
+import './IssueDetail.css';
 
 const mapStateToProps = state => (
   {
@@ -35,13 +36,19 @@ let IssueDetail = (props) => {
             <p><span>{selectedIssue.user.login} opened this issue on {selectedIssue.created_at}. {selectedIssue.comments} comments </span></p>
           </Col>
         </Row>
-        {/* <Row className="show-grid">
-          <Col xs={1}>
-          </Col>
+        <Row className="comments-section">
           <Col xs={2}>
-            <span>Issues<i>{issueCount}</i></span>
+            <img src={selectedIssue.user.avatar_url} title={selectedIssue.body} alt={selectedIssue.body} className="img-thumbnail comment-author-img"/>
           </Col>
-        </Row> */}
+          <Col xs={10}>
+            <Col xs={12}>
+            <span>{selectedIssue.user.login} commented on {selectedIssue.created_at}</span>
+            </Col>
+            <Col xs={12}>
+              <span>{selectedIssue.body}</span>
+            </Col>
+          </Col>
+        </Row>
       </Grid>
     </div>
   )}
