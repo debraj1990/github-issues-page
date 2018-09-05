@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as actionCreators from '../../actions/actionCreators';
-// import store from '../../store';
+import { fetchIssueList } from '../../helpers';
 import IssueHeader from '../issue-listing/IssueHeader';
 import { Form, Row, Col, Grid, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 import './IssueDetail.css';
@@ -21,11 +21,29 @@ const mapDispatchToProps = dispatch => (
 let IssueDetail = (props) => {
     console.log(props);
     
-    // Log the initial state
-    // console.log(store.getState());
+    // declare initial commentsArr
+    let commentsArr = [];
     const openIssuesLength = props.issues.filter(issueRow => issueRow.state === 'open').length;
     const selectedIssue = props.issues.find(issueRow => issueRow.number == props.match.params.issueNumber);
     console.log(selectedIssue);
+    //Call the comments API with the helper method
+    let commentsApiResponse = fetchIssueList(selectedIssue.comments_url);
+    commentsApiResponse
+    .then(response => response.json())
+    .catch(error => console.error('Error:', error))
+    .then((response) => {
+      if (typeof response === 'undefined') {
+          throw Error('The fetch request failed');
+      }
+      console.log('Success:', response);
+      // return response;
+      if(response.length){
+        commentsArr = response;
+        console.log('comments Arr:');
+        console.log(commentsArr);
+      }
+    });
+    console.log(commentsArr);
     return(
     <div className="issue-detail-page">
       <IssueHeader issueCount={openIssuesLength} repoOwner={props.repoOwner} repoName={props.repoName} />
@@ -38,7 +56,7 @@ let IssueDetail = (props) => {
         </Row>
         <Row className="comments-section">
           <Col xs={2}>
-            <img src={selectedIssue.user.avatar_url} title={selectedIssue.body} alt={selectedIssue.body} className="img-thumbnail comment-author-img"/>
+            <img src={selectedIssue.user.avatar_url} title={selectedIssue.user.login} alt={selectedIssue.user.login} className="img-thumbnail comment-author-img"/>
           </Col>
           <Col xs={10}>
             <Col xs={12}>
@@ -49,6 +67,21 @@ let IssueDetail = (props) => {
             </Col>
           </Col>
         </Row>
+        {commentsArr.map(commentRowItem =>
+          <Row key={commentRowItem.id} className="comments-section">
+            <Col xs={2}>
+              <img src={commentsArr.user.avatar_url} title={commentsArr.body} alt={commentsArr.body} className="img-thumbnail comment-author-img"/>
+            </Col>
+            <Col xs={10}>
+              <Col xs={12}>
+              <span>{commentsArr.user.login} commented on {commentsArr.created_at}</span>
+              </Col>
+              <Col xs={12}>
+                <span>{commentsArr.body}</span>
+              </Col>
+            </Col>
+          </Row>
+        )}
       </Grid>
     </div>
   )}
