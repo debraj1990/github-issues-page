@@ -35,12 +35,13 @@ let IssueDetail = (props) => {
           throw Error('The fetch request failed');
       }
       console.log('Success:', response);
-      // return response;
+      let commentsArr = [];
       if(response.length){
-        props.updateComment(response);
-        console.log('updated props:');
-        console.log(props);
+        commentsArr = response;
       }
+      props.updateComment(response);
+      console.log('updated props:');
+      console.log(props);
     });
     // commentsArr = props.comments;
     return(
