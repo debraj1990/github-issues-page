@@ -21,7 +21,10 @@ const mapDispatchToProps = dispatch => (
 
 let IssueDetail = (props) => {
     console.log(props);
-    
+    if(props.issues.length === 0) {
+      props.history.push(`/`);
+      window.location.reload();
+    }
     const openIssuesLength = props.issues.filter(issueRow => issueRow.state === 'open').length;
     const selectedIssue = props.issues.find(issueRow => issueRow.number == props.match.params.issueNumber);
     console.log(selectedIssue);
