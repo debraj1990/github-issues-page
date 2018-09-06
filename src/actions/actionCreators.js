@@ -22,12 +22,10 @@ export function updateResponse(filteredIssueList) {
   }
 }
 
-// remove comment
-
-// export function removeComment(postId, i) {
-//   return {
-//     type: 'REMOVE_COMMENT',
-//     i,
-//     postId
-//   }
-// }
+// update comment
+export function updateComment(commentList) {
+  return {
+    type: 'UPDATE_COMMENT',
+    commentList
+  }
+}

@@ -14,7 +14,7 @@ const defaultState = {
     issues: [],
     repoOwner: '',
     repoName: '',
-    comments: {"somekey":"somevalue", "anotherKey":"anotherValue"}
+    comments: []
   };
 
   const store = createStore(rootReducer, defaultState);

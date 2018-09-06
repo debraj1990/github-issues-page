@@ -1,11 +1,18 @@
 .issue-detail-page {
     .issue-details {
         .issue-title {
-            border-bottom: 1px solid grey;
+            border-bottom: 1px solid rgb(206, 205, 205);
         }
         .comments-section {
             .comment-author-img {
                 width: 50%;
+            }
+            .comments-heading {
+                background-color: #DFE7FF;
+            }
+            .comments-body {
+                border-top: 1px solid rgb(206, 205, 205);
+                border-bottom: 1px solid rgb(206, 205, 205);
             }
         }
     }
