@@ -34,10 +34,10 @@ class IssueList extends Component {
         <Grid className="result-table">
             <Row className="grey-bg">
             <Col xs={2}>
-                <span stateval="open" onClick={this.handleIssueStateChange}>{openIssuesLength} Open</span>
+                <span stateval="open" onClick={this.handleIssueStateChange}><i className="fas fa-exclamation-circle"></i>{openIssuesLength} Open</span>
             </Col>
             <Col xs={2}>
-                <span stateval="closed" onClick={this.handleIssueStateChange}>{closedIssuesLength} Closed</span>
+                <span stateval="closed" onClick={this.handleIssueStateChange}><i class="fas fa-check"></i>{closedIssuesLength} Closed</span>
             </Col>
             <Col xs={4}>
             </Col>
@@ -68,7 +68,7 @@ class IssueList extends Component {
                     <tr key={filteredItem.number}>
                         <td>
                             <Link to={`/issuedetail/${filteredItem.number}`}>
-                                <h4>{filteredItem.title}</h4>
+                                <h4>{filteredItem.state === 'open' ? <i className="fas fa-exclamation-circle status-open"></i> : <i className="fas fa-check status-close"></i>}{filteredItem.title}</h4>
                             </Link>
                             <p><span>#{filteredItem.number} opened on {filteredItem.created_at} by {filteredItem.user.login} </span></p>
                         </td>

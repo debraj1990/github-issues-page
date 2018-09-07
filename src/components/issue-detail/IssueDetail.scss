@@ -2,6 +2,25 @@
     .issue-details {
         .issue-title {
             border-bottom: 1px solid rgb(206, 205, 205);
+            .status-open {
+                background-color: #2cbe4e;
+            }
+            .status-close {
+                background-color: #cb2431;
+            }
+            .status-open,.status-close {
+                line-height: 20px;
+                font-weight: 600;
+                color: #fff;
+                text-align: center;
+                border-radius: 3px;
+                margin-right: 8px;
+                padding: 4px 8px;
+                text-transform: capitalize;
+                i {
+                    padding-right: 5px;
+                }
+            }
         }
         .comments-section {
             .comment-author-img {

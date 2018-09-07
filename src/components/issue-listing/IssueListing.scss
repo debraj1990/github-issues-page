@@ -2,10 +2,34 @@
     .control-label {
         // display: none;
     }
+    .issue-header {
+        .repo-info {}
+        .counter-tab {
+            .counter {
+                display: inline-block;
+                padding: 2px 5px;
+                font-size: 12px;
+                font-weight: 600;
+                line-height: 1;
+                color: #586069;
+                background-color: rgba(27,31,35,0.08);
+                border-radius: 20px;
+            }
+        }
+    }
     .result-table {
         .row:first-child {
             span {
                 cursor: pointer;
+            }
+        }
+        i {
+            padding-right: 5px;
+            &.status-open {
+                color: #2cbe4e;
+            }
+            &.status-close {
+                color: #cb2431;
             }
         }
     }

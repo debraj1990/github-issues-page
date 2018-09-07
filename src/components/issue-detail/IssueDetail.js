@@ -54,7 +54,10 @@ let IssueDetail = (props) => {
         <Row className="issue-title">
           <Col xs={12}>
             <h2>{selectedIssue.title} <span>#{selectedIssue.number}</span></h2>
-            <p><span>{selectedIssue.user.login} opened this issue on {selectedIssue.created_at}. {selectedIssue.comments} comments </span></p>
+            <p>
+              <span className={selectedIssue.state === 'open' ? 'status-open' : 'status-close'}>{selectedIssue.state === 'open' ? <i className="fas fa-exclamation-circle"></i> : <i className="fas fa-check"></i>}{selectedIssue.state}</span>
+              <span>{selectedIssue.user.login} opened this issue on {selectedIssue.created_at}. {selectedIssue.comments} comments </span>
+            </p>
           </Col>
         </Row>
         <Row className="comments-section">
